@@ -6,14 +6,15 @@ import kotlinx.coroutines.flow.StateFlow
 actual object OverlayPermission {
 
     actual val granted: StateFlow<Boolean>
-        get() = MutableStateFlow(true)
+        get() = MutableStateFlow(true) //TODO("Not yet implemented")
 
     actual fun isGranted(): Boolean {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return false
     }
 
     actual fun requestPermission(onGranted: () -> Unit) {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
 }

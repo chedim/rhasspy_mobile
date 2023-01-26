@@ -3,17 +3,19 @@ package org.rhasspy.mobile.logic.nativeutils
 import org.rhasspy.mobile.logic.settings.types.LanguageType
 
 actual fun getDeviceLanguage(): LanguageType {
-    TODO("Not yet implemented")
+    //TODO("Not yet implemented")
+    return LanguageType.English
 }
 
 actual fun setupLanguage() {
-    TODO("Not yet implemented")
+    //TODO("Not yet implemented")
 }
 
 actual fun getSystemAppLanguage(): LanguageType? {
-    TODO("Not yet implemented")
+    //TODO("Not yet implemented")
+    return null
 }
 
 actual fun setLanguage(languageType: LanguageType) {
-    TODO("Not yet implemented")
+    //TODO("Not yet implemented")
 }

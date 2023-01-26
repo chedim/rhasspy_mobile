@@ -2,6 +2,7 @@ package org.rhasspy.mobile.logic.nativeutils
 
 import dev.icerock.moko.resources.FileResource
 import io.ktor.utils.io.core.Closeable
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import org.rhasspy.mobile.logic.settings.option.AudioOutputOption
 
@@ -11,7 +12,7 @@ actual class AudioPlayer : Closeable {
      * represents if audio player is currently playing
      */
     actual val isPlayingState: StateFlow<Boolean>
-        get() = TODO("Not yet implemented")
+        get() = MutableStateFlow(false) //TODO("Not yet implemented")
 
 
     /**
@@ -29,6 +30,7 @@ actual class AudioPlayer : Closeable {
         onFinished: (() -> Unit)?,
         onError: ((exception: Exception?) -> Unit)?
     ) {
+        //TODO("Not yet implemented")
     }
 
     /**
@@ -46,16 +48,18 @@ actual class AudioPlayer : Closeable {
         onFinished: (() -> Unit)?,
         onError: ((exception: Exception?) -> Unit)?
     ) {
+        //TODO("Not yet implemented")
     }
 
     /**
      * stop playback
      */
     actual fun stop() {
+        //TODO("Not yet implemented")
     }
 
     override fun close() {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
     /**
@@ -71,6 +75,7 @@ actual class AudioPlayer : Closeable {
         onFinished: (() -> Unit)?,
         onError: ((exception: Exception?) -> Unit)?
     ) {
+        //TODO("Not yet implemented")
     }
 
 }

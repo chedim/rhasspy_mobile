@@ -6,18 +6,19 @@ import kotlinx.coroutines.flow.StateFlow
 actual abstract class NativeApplication {
 
     actual val currentlyAppInBackground: MutableStateFlow<Boolean>
-        get() = TODO("Not yet implemented")
+        get() = MutableStateFlow(false) //TODO("Not yet implemented")
     actual val isAppInBackground: StateFlow<Boolean>
-        get() = TODO("Not yet implemented")
+        get() = MutableStateFlow(false) //TODO("Not yet implemented")
 
     actual abstract suspend fun updateWidgetNative()
 
     actual fun isInstrumentedTest(): Boolean {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return true
     }
 
     actual fun openLink(link: String) {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
     actual abstract val isHasStarted: StateFlow<Boolean>
@@ -26,9 +27,11 @@ actual abstract class NativeApplication {
     actual abstract suspend fun stopTest()
     actual abstract fun setCrashlyticsCollectionEnabled(enabled: Boolean)
     actual fun restart() {
+        //TODO("Not yet implemented")
     }
 
     actual fun onCreate() {
+        //TODO("Not yet implemented")
     }
 
 }

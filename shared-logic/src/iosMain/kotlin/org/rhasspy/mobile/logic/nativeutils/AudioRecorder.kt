@@ -2,6 +2,7 @@ package org.rhasspy.mobile.logic.nativeutils
 
 import io.ktor.utils.io.core.Closeable
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 actual class AudioRecorder : Closeable {
@@ -10,33 +11,35 @@ actual class AudioRecorder : Closeable {
      * max volume since start recording
      */
     actual val maxVolume: StateFlow<Short>
-        get() = TODO("Not yet implemented")
+        get() = MutableStateFlow(0) //TODO("Not yet implemented")
     actual val isRecording: StateFlow<Boolean>
-        get() = TODO("Not yet implemented")
+        get() = MutableStateFlow(false) //TODO("Not yet implemented")
     actual val absoluteMaxVolume: Double
-        get() = TODO("Not yet implemented")
+        get() = 0.0 //TODO("Not yet implemented")
 
     /**
      * start recording
      */
     actual fun startRecording() {
+        //TODO("Not yet implemented")
     }
 
     /**
      * stop recording
      */
     actual fun stopRecording() {
+        //TODO("Not yet implemented")
     }
 
     override fun close() {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
     /**
      * output data as flow
      */
     actual val output: Flow<ByteArray>
-        get() = TODO("Not yet implemented")
+        get() = MutableStateFlow(ByteArray(0)) //TODO("Not yet implemented")
 
     actual companion object {
         /**
@@ -45,7 +48,8 @@ actual class AudioRecorder : Closeable {
          * to create wav header and add it in front of the given data
          */
         actual fun ByteArray.appendWavHeader(): ByteArray {
-            TODO("Not yet implemented")
+            //TODO("Not yet implemented")
+            return ByteArray(0)
         }
     }
 

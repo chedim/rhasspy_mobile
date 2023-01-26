@@ -1,5 +1,6 @@
 package org.rhasspy.mobile.logic.nativeutils
 
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import org.rhasspy.mobile.logic.mqtt.MqttError
 import org.rhasspy.mobile.logic.mqtt.MqttMessage
@@ -17,7 +18,7 @@ actual class MqttClient actual constructor(
 ) {
     /** If *true* then there is a connection to the MQTT Broker. */
     actual val isConnected: StateFlow<Boolean>
-        get() = TODO("Not yet implemented")
+        get() = MutableStateFlow(false) //TODO("Not yet implemented")
 
     /**
      * Publishes a message to the MQTT Broker.
@@ -33,7 +34,8 @@ actual class MqttClient actual constructor(
         msg: MqttMessage,
         timeout: Long
     ): MqttError? {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return null
     }
 
     /**
@@ -43,7 +45,8 @@ actual class MqttClient actual constructor(
      * @return Will return a [error][MqttError] if a problem has occurred.
      */
     actual suspend fun subscribe(topic: String, qos: MqttQos): MqttError? {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return null
     }
 
     /**
@@ -52,7 +55,8 @@ actual class MqttClient actual constructor(
      * @return Will return a [error][MqttError] if a problem has occurred.
      */
     actual suspend fun connect(connOptions: MqttServiceConnectionOptions): MqttError? {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return null
     }
 
     /**
@@ -60,7 +64,8 @@ actual class MqttClient actual constructor(
      * @return Will return a [error][MqttError] if a problem has occurred.
      */
     actual fun disconnect(): MqttError? {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return null
     }
 
 }

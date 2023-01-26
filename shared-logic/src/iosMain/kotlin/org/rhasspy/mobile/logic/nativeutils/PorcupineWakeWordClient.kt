@@ -16,27 +16,30 @@ actual class PorcupineWakeWordClient actual constructor(
     onError: (PorcupineError) -> Unit
 ) : Closeable {
     override fun close() {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
     /**
      * create porcupine client
      */
     actual fun initialize(): PorcupineError? {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return null
     }
 
     /**
      * start wake word detected
      */
     actual fun start(): PorcupineError? {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
+        return null
     }
 
     /**
      * stop wake word detected
      */
     actual fun stop() {
+        //TODO("Not yet implemented")
     }
 
 

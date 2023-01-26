@@ -14,22 +14,12 @@ import org.rhasspy.mobile.android.uiservices.IndicationOverlay
 import org.rhasspy.mobile.android.uiservices.MicrophoneOverlay
 import org.rhasspy.mobile.android.widget.MicrophoneWidget
 import org.rhasspy.mobile.logic.nativeutils.NativeApplication
-import kotlin.system.exitProcess
 
 /**
  * holds android application and native functions and provides koin module
  */
 class AndroidApplication : Application(), KoinComponent {
     private val logger = Logger.withTag("AndroidApplication")
-
-    init {
-        //catches all exceptions
-        Thread.setDefaultUncaughtExceptionHandler { thread, exception ->
-            println(exception)
-            logger.a(exception) { "uncaught exception in Thread $thread" }
-            exitProcess(2)
-        }
-    }
 
     override fun onCreate() {
         super.onCreate()
