@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform")
-    id("com.android.library")
     kotlin("plugin.serialization")
+    id("com.android.library")
 }
 
 kotlin {
@@ -14,6 +14,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "logic"
+            isStatic = true
         }
     }
 

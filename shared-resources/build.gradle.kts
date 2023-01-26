@@ -1,8 +1,8 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("dev.icerock.mobile.multiplatform-resources")
     id("com.codingfeline.buildkonfig")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -15,6 +15,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "resources"
+            isStatic = true
         }
     }
 
@@ -52,10 +53,6 @@ kotlin {
     }
 }
 
-multiplatformResources {
-    multiplatformResourcesPackage = "org.rhasspy.mobile" // required
-}
-
 android {
     namespace = "org.rhasspy.mobile.resources"
     compileSdk = 33
@@ -65,6 +62,7 @@ android {
 
     if (org.apache.tools.ant.taskdefs.condition.Os.isFamily(org.apache.tools.ant.taskdefs.condition.Os.FAMILY_MAC)) {
         sourceSets.getByName("main").res.srcDir(File(buildDir, "generated/moko/androidMain/res"))
+        sourceSets.getByName("main").res.srcDir(File(buildDir, "generated/moko/commonMain/res"))
     }
 }
 
@@ -112,4 +110,8 @@ fun generateChangelog(): String {
     } catch (e: Exception) {
         return ""
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "org.rhasspy.mobile" // required
 }
