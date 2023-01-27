@@ -32,6 +32,7 @@ kotlin {
         framework {
             baseName = "shared"
             isStatic = true
+            export("dev.icerock.moko:resources:_")
         }
     }
 
@@ -45,6 +46,7 @@ kotlin {
 
         val commonMain by getting {
             dependencies {
+                api(Icerock.Resources)
                 implementation(project(":shared-logic"))
                 implementation(project(":shared-ui"))
                 implementation(project(":shared-viewmodel"))
@@ -67,6 +69,7 @@ kotlin {
                 implementation(Benasher.uuid)
                 implementation(Koin.core)
                 implementation(Jetbrains.Compose.ui)
+                implementation(Jetbrains.Compose.full)
                 implementation(Jetbrains.Compose.foundation)
                 implementation(Jetbrains.Compose.material3)
                 implementation(Jetbrains.Compose.runtime)

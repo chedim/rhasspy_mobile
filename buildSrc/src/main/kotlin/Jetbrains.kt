@@ -11,6 +11,7 @@ object Jetbrains : IsNotADependency {
 
     object Compose : DependencyGroup(group = "org.jetbrains.compose") {
         val ui = module("$group.ui", "ui")
+        val full = module("$group", "compose-full")
         val foundation = module("$group.foundation", "foundation")
         val material = module("$group.material", "material")
         val material3 = module("$group.material3", "material3")

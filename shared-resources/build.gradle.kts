@@ -16,13 +16,14 @@ kotlin {
         it.binaries.framework {
             baseName = "resources"
             isStatic = true
+            export("dev.icerock.moko:resources:_")
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Icerock.Resources)
+                api(Icerock.Resources)
             }
         }
         val commonTest by getting {
