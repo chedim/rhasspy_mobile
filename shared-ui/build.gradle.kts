@@ -1,35 +1,55 @@
 plugins {
     kotlin("multiplatform")
+    kotlin("native.cocoapods")
     id("com.android.library")
+    id("org.jetbrains.compose")
 }
+
+version = Version.toString()
 
 kotlin {
     targets {
         android()
+        iosX64()
+        iosArm64()
+        iosSimulatorArm64()
     }
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
+    cocoapods {
+        summary = "Some description for the Shared Module"
+        homepage = "Link to the Shared Module homepage"
+        ios.deploymentTarget = "16.1"
+        podfile = project.file("../iosApp/Podfile")
+        framework {
             baseName = "shared_ui"
+            configureFramework()
+            export("dev.icerock.moko:resources:_")
         }
     }
 
     sourceSets {
+        all {
+            //Warning: This class can only be used with the compiler argument '-opt-in=kotlin.RequiresOptIn'
+            languageSettings.optIn("kotlin.RequiresOptIn")
+        }
+
         val commonMain by getting {
             dependencies {
-                /*  implementation("org.jetbrains.compose.ui:ui:_")
-                  implementation("org.jetbrains.compose.foundation:foundation:_")
-                  implementation("org.jetbrains.compose.material3:material3:_")
-                  implementation("org.jetbrains.compose.runtime:runtime:_") */
+                api(Icerock.Resources)
+                implementation(project(":shared-viewmodel"))
+                implementation(project(":shared-resources"))
+                implementation(Icerock.Mvvm.core)
+                implementation(Jetbrains.Compose.ui)
+                implementation(Jetbrains.Compose.ui)
+                implementation(Jetbrains.Compose.full)
+                implementation(Jetbrains.Compose.foundation)
+                implementation(Jetbrains.Compose.material3)
+                implementation(Jetbrains.Compose.runtime)
             }
         }
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test"))
+                implementation(Kotlin.test)
             }
         }
         val androidMain by getting
@@ -56,9 +76,25 @@ kotlin {
 }
 
 android {
-    namespace = "org.rhasspy.mobile.ui"
+    namespace = "org.rhasspy.mobile"
     compileSdk = 33
     defaultConfig {
         minSdk = 23
     }
+}
+
+compose {
+    //necessary to use the androidx compose compiler for multiplatform in order to use kotlin 1.8
+    kotlinCompilerPlugin.set(AndroidX.Compose.compiler.toString())
+}
+
+fun org.jetbrains.kotlin.gradle.plugin.mpp.Framework.configureFramework() {
+    isStatic = true
+    freeCompilerArgs = listOf(
+        "-linker-options",
+        "-U _FIRCLSExceptionRecordNSException " +
+                "-U _OBJC_CLASS_\$_FIRStackFrame " +
+                "-U _OBJC_CLASS_\$_FIRExceptionModel " +
+                "-U _OBJC_CLASS_\$_FIRCrashlytics"
+    )
 }

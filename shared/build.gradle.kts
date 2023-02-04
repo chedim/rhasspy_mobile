@@ -31,11 +31,10 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
-            isStatic = true
+            configureFramework()
             export("dev.icerock.moko:resources:_")
         }
     }
-
 
     sourceSets {
         all {
@@ -219,4 +218,15 @@ val increaseCodeVersion = tasks.register("increaseCodeVersion") {
 compose {
     //necessary to use the androidx compose compiler for multiplatform in order to use kotlin 1.8
     kotlinCompilerPlugin.set(AndroidX.Compose.compiler.toString())
+}
+
+fun org.jetbrains.kotlin.gradle.plugin.mpp.Framework.configureFramework() {
+    isStatic = false
+    freeCompilerArgs = listOf(
+        "-linker-options",
+        "-U _FIRCLSExceptionRecordNSException " +
+                "-U _OBJC_CLASS_\$_FIRStackFrame " +
+                "-U _OBJC_CLASS_\$_FIRExceptionModel " +
+                "-U _OBJC_CLASS_\$_FIRCrashlytics"
+    )
 }
